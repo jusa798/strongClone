@@ -29,12 +29,6 @@ function App() {
     reps: "9",
   };
 
-  const listOfButtons = {
-    set: "ADD SET",
-    exercise: "ADD EXERCISE",
-    cancel: "CANCEL WORKOUT"
-  }
-
   const exercises = {
     A: "Squat (Barbell)"
   }
@@ -53,7 +47,7 @@ function App() {
       <div className='w-96 h-4/6 bg-[#ffffff] rounded-lg flex-row py-4'>
         <div className='flex items-center justify-center'>
           <div className="flex flex-col">
-            <TimerHeader></TimerHeader>
+            <TimerHeader/>
             <div className="text-sm font-bold text-base">{workoutNames.A}</div>
             <div className="text-xs font-light opacity-50">{Cronometer()}</div>
             <textarea className="w-full bg-[#e8ebea] rounded-lg my-4 text-xs p-2">Workout note...</textarea>
@@ -70,7 +64,7 @@ function App() {
           </div>
         </div>
          <div>
-            <Button buttons={listOfButtons}></Button>
+            <Button/>
           </div>
         </div>
     </div>
