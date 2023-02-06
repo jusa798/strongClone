@@ -17,7 +17,7 @@ function App() {
     previous: "50 kg x 5",
     kg: "50",
     reps: "9",
-    hola: "chao",
+    hola: "bye",
   };
 
   return (
