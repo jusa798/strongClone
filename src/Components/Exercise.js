@@ -5,57 +5,25 @@ import { useState } from 'react';
 function Exercise(props) {
   const set1 = {
     number: 1,
-    previous: [props.kgInput, props.repsInput],
-    kg: props.kgInput,
-    reps: props.repsInput,
+    previous: '50kg x 5',
+    kg: '50',
+    reps: '5',
   };
 
   const set2 = {
     number: 2,
-    previous: [props.kgInput, props.repsInput],
-    kg: props.kgInput,
-    reps: props.repsInput,
-  };
-  const set3 = {
-    number: 3,
-    previous: [props.kgInput, props.repsInput],
-    kg: props.kgInput,
-    reps: props.repsInput,
+    previous: '50kg x 5',
+    kg: '50',
+    reps: '5',
   };
 
   return (
     <>
-      <Set
-        setData={set1}
-        cb={props.cb}
-        inputKg={props.inputKg}
-        inputReps={props.inputReps}
-      ></Set>
-      <Set
-        setData={set2}
-        cb={props.cb}
-        inputKg={props.inputKg}
-        inputReps={props.inputReps}
-      ></Set>
-      <Set
-        setData={set3}
-        cb={props.cb}
-        inputKg={props.inputKg}
-        inputReps={props.inputReps}
-      ></Set>
+      <div>{props.exerciseName}</div>
+      <Set setData={set1} cb={props.cb} exerciseName={props.exerciseName}></Set>
+      <Set setData={set2} cb={props.cb} exerciseName={props.exerciseName}></Set>
     </>
   );
 }
 
 export default Exercise;
-
-// const exercise1 = {
-//   name: 'Squats',
-//   sets: [set1, set2, set3],
-// };
-// const exercise2 = {
-//   name: 'Bench press',
-//   sets: [set1, set2, set3],
-// };
-
-// const exercisesArray = [exercise1, exercise2];
