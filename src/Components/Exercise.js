@@ -1,25 +1,38 @@
-import React from 'react';
-import Set from '../Components/Set';
-import { useState } from 'react';
+import React from "react";
+import Set from "../Components/Set";
+import { useState } from "react";
 
 function Exercise(props) {
   const set1 = {
     number: 1,
-    previous: '50kg x 5',
-    kg: '50',
-    reps: '5',
+    previous: "50kg x 5",
+    kg: "50",
+    reps: "5",
   };
 
   const set2 = {
     number: 2,
-    previous: '50kg x 5',
-    kg: '50',
-    reps: '5',
+    previous: "50kg x 5",
+    kg: "50",
+    reps: "5",
+  };
+
+  const titles = {
+    setCol: "SET",
+    prevCol: "PREVIOUS",
+    kgCol: "KG",
+    repsCol: "REPS",
   };
 
   return (
     <>
       <div>{props.exerciseName}</div>
+      <div className='w-70% h-10 flex justify-items-start items-center rounded-lg py-2 text-xs'>
+        <div className='opacity-50'>{titles.setCol}</div>
+        <div className='pl-2 opacity-50'>{titles.prevCol}</div>
+        <div className='pl-9 opacity-50'>{titles.kgCol}</div>
+        <div className='pl-14 opacity-50'>{titles.repsCol}</div>
+      </div>
       <Set setData={set1} cb={props.cb} exerciseName={props.exerciseName}></Set>
       <Set setData={set2} cb={props.cb} exerciseName={props.exerciseName}></Set>
     </>

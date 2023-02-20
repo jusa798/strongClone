@@ -1,20 +1,13 @@
-import Set from './Components/Set';
-import Buttons from './Components/Buttons';
-import Exercise from './Components/Exercise';
-import { BsFillCheckSquareFill, BsListTask } from 'react-icons/bs';
-import { AiOutlineCheckSquare } from 'react-icons/ai';
-import TimerHeader from './Components/TimerHeader';
-import { useState } from 'react';
+import Set from "./Components/Set";
+import Buttons from "./Components/Buttons";
+import Exercise from "./Components/Exercise";
+import { BsFillCheckSquareFill, BsListTask } from "react-icons/bs";
+import { AiOutlineCheckSquare } from "react-icons/ai";
+import TimerHeader from "./Components/TimerHeader";
+import { useState } from "react";
 
 function App() {
   const [workouts, setWorkouts] = useState({});
-
-  const titles = {
-    setCol: 'SET',
-    prevCol: 'PREVIOUS',
-    kgCol: 'KG',
-    repsCol: 'REPS',
-  };
 
   const Cronometer = () => {
     return <div>4:50</div>;
@@ -46,12 +39,6 @@ function App() {
               Workout note...
             </textarea>
             <div className='text-sm text-blue-500 pt-2'></div>
-            <div className='w-70% h-10 flex justify-items-start items-center rounded-lg py-2 text-xs'>
-              <div className='opacity-50'>{titles.setCol}</div>
-              <div className='pl-2 opacity-50'>{titles.prevCol}</div>
-              <div className='pl-9 opacity-50'>{titles.kgCol}</div>
-              <div className='pl-14 opacity-50'>{titles.repsCol}</div>
-            </div>
             <Exercise cb={handleWorkout} exerciseName='Squat' />
             <Exercise cb={handleWorkout} exerciseName='Bench press' />
           </div>
