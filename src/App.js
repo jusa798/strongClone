@@ -3,9 +3,15 @@ import { BsFillCheckSquareFill, BsListTask } from 'react-icons/bs';
 import { AiOutlineCheckSquare } from 'react-icons/ai';
 import TimerHeader from './Components/TimerHeader';
 import { useState } from 'react';
+import CustomButtons from './Components/CustomButtons';
 
 function App() {
   const [workouts, setWorkouts] = useState({});
+  const [exercises, setExercises] = useState([
+    'Bench Press',
+    'Squat',
+    'Hip Thrust',
+  ]);
 
   const Cronometer = () => {
     return <div>4:50</div>;
@@ -25,9 +31,17 @@ function App() {
     console.log(currentWorkout);
   };
 
+  const handleAddExercise = () => {
+    setExercises([...exercises, 'Hip Thrust']);
+  };
+
+  const handleRemoveExercise = (exerciseName) => {
+    console.log('hello');
+  };
+
   return (
     <div className='w-screen h-screen bg-slate-600 flex items-center justify-center'>
-      <div className='w-96 h-fit bg-[#ffffff] rounded-lg flex-row py-4'>
+      <div className='w-96 h-full md:h-3/4 bg-[#ffffff] rounded-lg flex-row p-8 overflow-x-hidden'>
         <div className='flex flex-col items-center justify-center'>
           <div className='flex flex-col'>
             <TimerHeader />
@@ -37,10 +51,24 @@ function App() {
               Workout note...
             </textarea>
             <div className='text-sm text-blue-500 pt-2'></div>
-            <Exercise cb={handleWorkout} exerciseName='Squat' />
-            <Exercise cb={handleWorkout} exerciseName='Bench press' />
+
+            {exercises.map((exerciseName) => {
+              return (
+                <Exercise
+                  cb={handleWorkout}
+                  exerciseName={exerciseName}
+                  removeCB={handleRemoveExercise}
+                />
+              );
+            })}
           </div>
         </div>
+        <CustomButtons
+          content={'ADD EXERCISE'}
+          fontsize={'text-lg'}
+          color={'text-green-600'}
+          cb={() => handleAddExercise()}
+        />
       </div>
     </div>
   );
