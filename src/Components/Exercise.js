@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 function Exercise(props) {
   const [numSets, setNumSets] = useState([1, 2]);
+  const [oneSetLeft, setOneSetLeft] = useState(false);
 
   const titles = {
     setCol: 'SET',
@@ -14,15 +15,20 @@ function Exercise(props) {
   };
 
   const addSetHandler = () => {
+    if (oneSetLeft == true) {
+      setOneSetLeft(false);
+    }
     setNumSets([...numSets, numSets.length + 1]);
-    console.log(numSets);
   };
 
   const removeSetHandler = () => {
-    if (numSets == 1) {
-      return;
+    if (numSets.length > 1) {
+      setNumSets(numSets.splice(0, numSets.length - 1));
     }
-    setNumSets(numSets.splice(0, numSets.length - 1));
+
+    if (numSets.length == 1) {
+      setOneSetLeft(true);
+    }
   };
 
   return (
@@ -47,7 +53,7 @@ function Exercise(props) {
       <div className='flex flex-col'>
         <CustomButtons content={'ADD SET'} cb={addSetHandler}></CustomButtons>
         <CustomButtons
-          content={'REMOVE SET'}
+          content={`${oneSetLeft ? 'REMOVE EXERCISE' : 'REMOVE SET'}`}
           cb={removeSetHandler}></CustomButtons>
       </div>
     </>
