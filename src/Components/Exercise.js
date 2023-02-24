@@ -1,27 +1,28 @@
-import React from "react";
-import Set from "../Components/Set";
-import { useState } from "react";
+import React from 'react';
+import Set from '../Components/Set';
+import CustomButtons from '../Components/CustomButtons';
+import { useState } from 'react';
 
 function Exercise(props) {
-  const set1 = {
-    number: 1,
-    previous: "50kg x 5",
-    kg: "50",
-    reps: "5",
-  };
-
-  const set2 = {
-    number: 2,
-    previous: "50kg x 5",
-    kg: "50",
-    reps: "5",
-  };
+  const [numSets, setNumSets] = useState([1, 2]);
 
   const titles = {
-    setCol: "SET",
-    prevCol: "PREVIOUS",
-    kgCol: "KG",
-    repsCol: "REPS",
+    setCol: 'SET',
+    prevCol: 'PREVIOUS',
+    kgCol: 'KG',
+    repsCol: 'REPS',
+  };
+
+  const addSetHandler = () => {
+    setNumSets([...numSets, numSets.length + 1]);
+    console.log(numSets);
+  };
+
+  const removeSetHandler = () => {
+    if (numSets == 1) {
+      return;
+    }
+    setNumSets(numSets.splice(0, numSets.length - 1));
   };
 
   return (
@@ -33,8 +34,22 @@ function Exercise(props) {
         <div className='pl-9 opacity-50'>{titles.kgCol}</div>
         <div className='pl-14 opacity-50'>{titles.repsCol}</div>
       </div>
-      <Set setData={set1} cb={props.cb} exerciseName={props.exerciseName}></Set>
-      <Set setData={set2} cb={props.cb} exerciseName={props.exerciseName}></Set>
+      <div>
+        {numSets.map((integer) => {
+          return (
+            <Set
+              setNumber={integer}
+              cb={props.cb}
+              exerciseName={props.exerciseName}></Set>
+          );
+        })}
+      </div>
+      <div className='flex flex-col'>
+        <CustomButtons content={'ADD SET'} cb={addSetHandler}></CustomButtons>
+        <CustomButtons
+          content={'REMOVE SET'}
+          cb={removeSetHandler}></CustomButtons>
+      </div>
     </>
   );
 }

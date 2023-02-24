@@ -1,10 +1,8 @@
-import Set from "./Components/Set";
-import Buttons from "./Components/Buttons";
-import Exercise from "./Components/Exercise";
-import { BsFillCheckSquareFill, BsListTask } from "react-icons/bs";
-import { AiOutlineCheckSquare } from "react-icons/ai";
-import TimerHeader from "./Components/TimerHeader";
-import { useState } from "react";
+import Exercise from './Components/Exercise';
+import { BsFillCheckSquareFill, BsListTask } from 'react-icons/bs';
+import { AiOutlineCheckSquare } from 'react-icons/ai';
+import TimerHeader from './Components/TimerHeader';
+import { useState } from 'react';
 
 function App() {
   const [workouts, setWorkouts] = useState({});
@@ -29,7 +27,7 @@ function App() {
 
   return (
     <div className='w-screen h-screen bg-slate-600 flex items-center justify-center'>
-      <div className='w-96 h-4/6 bg-[#ffffff] rounded-lg flex-row py-4'>
+      <div className='w-96 h-fit bg-[#ffffff] rounded-lg flex-row py-4'>
         <div className='flex flex-col items-center justify-center'>
           <div className='flex flex-col'>
             <TimerHeader />
@@ -42,9 +40,7 @@ function App() {
             <Exercise cb={handleWorkout} exerciseName='Squat' />
             <Exercise cb={handleWorkout} exerciseName='Bench press' />
           </div>
-          <Buttons></Buttons>
         </div>
-        <div></div>
       </div>
     </div>
   );
