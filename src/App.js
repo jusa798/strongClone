@@ -1,6 +1,4 @@
 import Exercise from './Components/Exercise';
-import { BsFillCheckSquareFill, BsListTask } from 'react-icons/bs';
-import { AiOutlineCheckSquare } from 'react-icons/ai';
 import TimerHeader from './Components/TimerHeader';
 import { useState } from 'react';
 import CustomButtons from './Components/CustomButtons';
@@ -36,7 +34,13 @@ function App() {
   };
 
   const handleRemoveExercise = (exerciseName) => {
-    console.log('hello');
+    let exercisesArray = exercises;
+    let exerciseNameVar = exerciseName;
+    let filteredArray = exercisesArray.filter(
+      (exercise) => exercise !== exerciseNameVar
+    );
+    console.log(filteredArray);
+    setExercises(filteredArray);
   };
 
   return (
@@ -57,7 +61,8 @@ function App() {
                 <Exercise
                   cb={handleWorkout}
                   exerciseName={exerciseName}
-                  removeCB={handleRemoveExercise}
+                  color={'text-blue-500'}
+                  removeExerciseCB={handleRemoveExercise}
                 />
               );
             })}
